@@ -23,7 +23,7 @@ namespace PersonalDailyPhotosFunction
         }
 
         [FunctionName("PersonalDailyPhotosFunction")]
-        public async Task Run([TimerTrigger("0 0 6 * * *", RunOnStartup = true)] TimerInfo myTimer, ILogger log)
+        public async Task Run([TimerTrigger("0 0 6 * * *")] TimerInfo myTimer, ILogger log)
         {
             var randomDailyPhotosCollections = await _webDav.GetFolderContentsAsync(Util.GetEnvironmentVariable("WEBDAV_RANDOMPHOTOSFOLDER"));
             var randomDailyPhotosCollection = randomDailyPhotosCollections.PickRandom();
